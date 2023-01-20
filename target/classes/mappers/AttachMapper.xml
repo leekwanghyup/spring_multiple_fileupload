@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jafa.repository.AttachRepository">
+  
+  	<insert id="save">
+  		insert all
+  		<foreach collection="attachVOList" item="attach">
+  			into attach_file02(bno,filePath,fileName,fileType)
+  			values(#{attach.bno},#{attach.filePath},#{attach.fileName},#{attach.fileType})
+  		</foreach>
+		select * from dual
+  	</insert>
+  	
+  	<select id="list" resultType="attachVO">
+  		select * from attach_file02 where bno=#{bno}
+  	</select>
+</mapper>
